@@ -1,0 +1,36 @@
+.header {
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__input {
+  width: 250px;
+  height: 40px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.header__form-btn {
+  border: none;
+  font-size: 16px;
+  color: white;
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.header__form-btn:disabled {
+  background-color: darkgrey;
+  cursor: not-allowed
+}
+
+.header__error-msg {
+  color: red;
+}

@@ -1,0 +1,77 @@
+.tasks-list {
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tasks-list__btns {
+  width: 100%;
+  background-color: rgb(217, 231, 243);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.tasks-list__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.tasks-list__btn {
+  height: 40px;
+  margin-left: 10px;
+  border: none;
+  color: white;
+  font-weight: 800;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 60px;
+}
+
+.tasks-list__btn:disabled {
+  background-color: darkgrey;
+}
+
+.tasks-list__btn_save {
+  background-color: dodgerblue;
+}
+
+.tasks-list__btn_cancel {
+  background-color: rgb(213, 90, 90);
+  margin-right: 10px;
+}
+
+.tasks-list__btn_add {
+  border-radius: 50%;
+  background-color: rgb(181, 194, 208);
+  padding: 0;
+  padding: 0 7px;
+  margin-left: 5px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+}
+
+.tasks-list__subtitle {
+  color: rgb(213, 90, 90)
+}
+
+.tasks-list__title {
+  margin: 0;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width:1200px) {
+  .tasks-list {
+    width: 100%;
+  }
+}
