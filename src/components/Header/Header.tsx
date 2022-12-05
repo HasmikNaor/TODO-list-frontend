@@ -26,12 +26,6 @@ const Header: FC = () => {
     globalStore.setIsAddTaskFormOpen();
   }
 
-  // useEffect(() => {
-  //   if (!errorMessage && task) {
-  //     globalStore.setIsAddTaskFormOpen();
-  //   }
-  // }, [errorMessage, task]);
-
   const handleBtnDisabled = () => {
     if (task) {
       setIsBtnDisabled(false);
