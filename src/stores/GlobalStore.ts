@@ -17,7 +17,6 @@ class GlobalStore {
 
     const localTasks = { ...this.todos }
     const savedTasks = { ...savedTasksArr }
-    console.log(localTasks, savedTasks)
     if (this.todos.length !== savedTasksArr.length) {
       this.setIsMainBtnsDisabled(false);
     }
