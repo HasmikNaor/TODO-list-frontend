@@ -15,20 +15,24 @@ class GlobalStore {
   private checkChanges() {
     const savedTasksArr = JSON.parse(localStorage.getItem('tasks') as string) as ITodo[] || [];
 
-    const localTasks = { ...this.todos }
-    const savedTasks = { ...savedTasksArr }
+    const localTasks = { ...this.todos };
+    const savedTasks = { ...savedTasksArr };
+
     if (this.todos.length !== savedTasksArr.length) {
       this.setIsMainBtnsDisabled(false);
+      return;
     }
-    else {
-      for (let todo in localTasks) {
-        if (localTasks[todo] !== savedTasks[todo]) {
-          this.setIsMainBtnsDisabled(false);
-          break;
-        }
-        else this.setIsMainBtnsDisabled(true);
+
+    for (let todo in localTasks) {
+
+      if ((localTasks[todo].task !== savedTasks[todo].task) ||
+        (localTasks[todo].isDone !== savedTasks[todo].isDone)) {
+        this.setIsMainBtnsDisabled(false);
+        return;
       }
+      this.setIsMainBtnsDisabled(true);
     }
+
   }
 
   @observable
