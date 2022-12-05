@@ -1,5 +1,6 @@
 import { ITodo } from './../data/interfaces';
 import { action, computed, makeObservable, observable } from "mobx";
+import { createSecureContext } from 'tls';
 
 class GlobalStore {
   constructor() {
@@ -12,11 +13,17 @@ class GlobalStore {
     this.isMainBtnsDisabled = value
   }
 
+  convertArrayToDict(arr: ITodo[]) {
+    //create a dictionary with {task:isdone}
+    return arr.reduce(function (collect, current: ITodo) {
+      return { ...collect, [current.task]: current.isDone }
+    }, { [arr[0]?.task]: arr[0]?.isDone });
+  }
+
   private checkChanges() {
     const savedTasksArr = JSON.parse(localStorage.getItem('tasks') as string) as ITodo[] || [];
-
-    const localTasks = { ...this.todos };
-    const savedTasks = { ...savedTasksArr };
+    const localTasks = this.convertArrayToDict(this.todos);
+    const savedTasks = this.convertArrayToDict(savedTasksArr);
 
     if (this.todos.length !== savedTasksArr.length) {
       this.setIsMainBtnsDisabled(false);
@@ -24,9 +31,7 @@ class GlobalStore {
     }
 
     for (let todo in localTasks) {
-
-      if ((localTasks[todo].task !== savedTasks[todo].task) ||
-        (localTasks[todo].isDone !== savedTasks[todo].isDone)) {
+      if (!(todo in savedTasks) || localTasks[todo] !== savedTasks[todo]) {
         this.setIsMainBtnsDisabled(false);
         return;
       }
