@@ -18,13 +18,20 @@ const Header: FC = () => {
       })
       setTask("");
     }
-    else setErrorMessage("this task already exists")
-
-    if (errorMessage) {
-      globalStore.setIsAddTaskFormOpen();
+    else {
+      setErrorMessage("this task already exists");
+      return;
     }
 
+    globalStore.setIsAddTaskFormOpen();
   }
+
+  // useEffect(() => {
+  //   if (!errorMessage && task) {
+  //     globalStore.setIsAddTaskFormOpen();
+  //   }
+  // }, [errorMessage, task]);
+
   const handleBtnDisabled = () => {
     if (task) {
       setIsBtnDisabled(false);
