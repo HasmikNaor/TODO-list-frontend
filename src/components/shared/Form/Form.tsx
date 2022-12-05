@@ -13,7 +13,7 @@ const Form: FC<IForce> = ({ value, handleInput, className, handleSubmit, buttonT
 
   return (
     <form onSubmit={handleSubmit} className={`${className}__form`}>
-      <input type="text" maxLength={10} className={`${className}__input`} value={value} onChange={handleInput} placeholder="add task..." />
+      <input type="text" maxLength={40} className={`${className}__input`} value={value} onChange={handleInput} placeholder="add task..." />
       <button type="submit" className={`${className}__form-btn`} disabled={isBtnDisabled}>{buttonText || ""}</button>
     </form>)
 }

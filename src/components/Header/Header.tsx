@@ -19,6 +19,9 @@ const Header: FC = () => {
       setTask("");
     }
     else setErrorMessage("this task already exists")
+
+    globalStore.setIsAddTaskFormOpen();
+
   }
   const handleBtnDisabled = () => {
     if (task) {

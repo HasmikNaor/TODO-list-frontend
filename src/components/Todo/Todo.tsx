@@ -36,6 +36,10 @@ const Todo: FC<ITodo> = observer(({ task, isDone }) => {
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!tempTask) {
+      setErrorMessage("can't add empety task");
+      return;
+    }
 
     if (!globalStore.findTodo(tempTask) && tempTask) {
       globalStore.updateTask({ task, isDone }, { task: tempTask, isDone })
